@@ -1,0 +1,21 @@
+package com.wangan.spring.MyScanCondition;
+
+import org.springframework.context.annotation.Condition;
+import org.springframework.context.annotation.ConditionContext;
+import org.springframework.core.env.Environment;
+import org.springframework.core.type.AnnotatedTypeMetadata;
+
+/**
+ * @author wangan on 2018/7/12
+ * @description
+ */
+public class WindowCondition implements Condition {
+	public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
+		Environment environment = context.getEnvironment();
+		String property = environment.getProperty("os.name");
+		if(property.toLowerCase().contains("windows")){
+			return true;
+		}
+		return false;
+	}
+}
