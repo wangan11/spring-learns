@@ -4,6 +4,7 @@ import com.wangan.spring.config.MyConfig;
 import com.wangan.spring.config.MyConfig1;
 import com.wangan.spring.config.MyFactoryBean;
 import com.wangan.spring.entity.User;
+import com.wangan.spring.lifecycle.MyBeanLifeCycle;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.core.env.ConfigurableEnvironment;
@@ -48,6 +49,12 @@ public class MyTest {
 		Object bean2= applicationContext.getBean("&myFactoryBean");
 		System.out.println(bean2);
 
+	}
+
+	@Test
+	public void test2(){
+		AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MyBeanLifeCycle.class);
+		applicationContext.close();
 	}
 
 }
